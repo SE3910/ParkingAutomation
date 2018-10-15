@@ -1,0 +1,28 @@
+[                                                                               
+    {                                                                           
+        "model": "api.Gate",
+        "pk": 1,
+        "fields": {
+            "name": "South Lower",
+            "active": "True",
+            "total_spots": "50",
+            "master": "True"
+        }
+    },
+    {
+        "model": "api.Area",
+        "pk": 1,
+        "fields": {
+            "name": "Level 1",
+            "total_spots": 25
+        }
+    },
+    {
+        "model": "api.Area",
+        "pk": 2,
+        "fields": {
+            "name": "Level 2",
+            "total_spots": 25
+        }
+    }
+]
