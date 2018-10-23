@@ -10,10 +10,19 @@ def gate(request):
     action = request.GET.get('action', 'info')
     gate = Gate.objects.get(pk=request.GET.get('id', '1'))
     if action == 'enter':
-        ticket = Ticket(gate=gate)
-        ticket.save()
-        return JsonResponse({'ticketId': str(ticket.id), 'timestamp': str(ticket.clock_in)})
+        t = gate.enter()
+        return JsonResponse(t.json())
     elif action == 'exit':
+        gate = Gate.objects.get(pk=request.GET.get('id', '1'))
         ticket = Ticket.objects.get(pk=request.GET.get('ticketid'))
-    return JsonResponse({'id': str(gate.id), 'name': gate.name, 'total_spots': str(gate.total_spots)})
+        paid = gate.exit(ticket)
+        j = paid.json()
+        j['status'] = 'success'
+        return JsonResponse(j)
+    elif action == 'available':
+        gate = Gate.objects.get(pk=request.GET.get('id', '1'))
+        j = gate.json()
+        j['available'] = gate.available()
+        return JsonResponse(j)
+    return JsonResponse(gate.json())
 
