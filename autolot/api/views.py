@@ -14,7 +14,7 @@ def gate(request):
         return JsonResponse(t.json())
     elif action == 'exit':
         gate = Gate.objects.get(pk=request.GET.get('id', '1'))
-        ticket = Ticket.objects.get(pk=request.GET.get('ticketid'))
+        ticket = Ticket.objects.get(pk=request.GET.get('ticketId'))
         paid = gate.exit(ticket)
         j = paid.json()
         j['status'] = 'success'

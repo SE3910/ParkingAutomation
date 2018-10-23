@@ -24,5 +24,24 @@
             "name": "Level 2",
             "total_spots": 25
         }
+    },
+    {
+        "model": "api.Rate",
+        "pk": 0,
+        "fields": {
+            "min_time": 0.0,
+            "max_time": 0.5,
+            "charge": 0
+        }
+    },
+    {
+        "model": "api.Rate",
+        "pk": 1,
+        "fields": {
+            "min_time": 0.5,
+            "max_time": 3.0,
+            "charge": 5
+        }
     }
+        
 ]
