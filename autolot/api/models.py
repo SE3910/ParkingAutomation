@@ -26,7 +26,7 @@ class Gate(models.Model):
         return p
 
     def available(self):
-        return total_spots - self.ticket_set.count()
+        return self.total_spots - self.ticket_set.count()
 
     def json(self):
         return {'name': self.name, 'active': 'true' if self.active else 'false', 'totalSpots': str(self.total_spots), 'tickets': [t.json() for t in self.ticket_set.all()], 'rates': [r.json() for r in self.rate_set.all()]}

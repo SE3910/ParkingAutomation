@@ -29,18 +29,22 @@
         "model": "api.Rate",
         "pk": 0,
         "fields": {
+            "gate_id": "1",
             "min_time": 0.0,
             "max_time": 0.5,
-            "charge": 0
+            "charge": 0,
+            "rate_code": "FREE30"
         }
     },
     {
         "model": "api.Rate",
         "pk": 1,
         "fields": {
+            "gate_id": "1",
             "min_time": 0.5,
             "max_time": 3.0,
-            "charge": 5
+            "charge": 5,
+            "rate_code": "SHORT"
         }
     }
         

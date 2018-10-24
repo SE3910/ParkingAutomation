@@ -11,7 +11,9 @@ def gate(request):
     gate = Gate.objects.get(pk=request.GET.get('id', '1'))
     if action == 'enter':
         t = gate.enter()
-        return JsonResponse(t.json())
+        j = t.json()
+        j['status'] = 'success'
+        return JsonResponse(j)
     elif action == 'exit':
         gate = Gate.objects.get(pk=request.GET.get('id', '1'))
         ticket = Ticket.objects.get(pk=request.GET.get('ticketId'))
@@ -21,8 +23,21 @@ def gate(request):
         return JsonResponse(j)
     elif action == 'available':
         gate = Gate.objects.get(pk=request.GET.get('id', '1'))
-        j = gate.json()
-        j['available'] = gate.available()
-        return JsonResponse(j)
+        return JsonResponse({'available': str(gate.available())})
     return JsonResponse(gate.json())
+
+
+def rates(request):
+    ret = {}
+    action = request.GET.get('action', 'info')
+    if action == 'add':
+        r = Rate(gate=Gate.objects.get(pk=request.GET.get('gate', '1')), 
+                 rate_code=request.GET.get('rate_code'),
+                 min_time=request.GET.get('min_time'),
+                 max_time=request.GET.get('max_time'),
+                 charge=request.GET.get('charge'))
+        r.save()
+        ret = r.json()
+        ret['status']='success'
+    return JsonResponse(ret)
 
