@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from .models import Ticket, Gate
+from .models import Ticket, Gate, Rate
 from .lib import TransactionHandler
 
 def index(request):
