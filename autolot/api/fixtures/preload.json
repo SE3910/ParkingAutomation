@@ -13,6 +13,7 @@
         "model": "api.Area",
         "pk": 1,
         "fields": {
+            "gate_id": "1",
             "name": "Level 1",
             "total_spots": 25
         }
@@ -21,6 +22,7 @@
         "model": "api.Area",
         "pk": 2,
         "fields": {
+            "gate_id": "1",
             "name": "Level 2",
             "total_spots": 25
         }

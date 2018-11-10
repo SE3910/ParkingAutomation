@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from .models import Ticket, Gate, Rate
+from .models import Ticket, Gate, Rate, Area
 from .lib import TransactionHandler
 
 def index(request):
@@ -24,6 +24,10 @@ def gate(request):
     elif action == 'available':
         gate = Gate.objects.get(pk=request.GET.get('id', '1'))
         return JsonResponse({'available': str(gate.available())})
+    elif action == 'areas':
+        gate = Gate.objects.get(pk=request.GET.get('id', '1'))
+        areas = [a.json() for a in gate.area_set.all()]
+        return JsonResponse({'areas': areas})
     return JsonResponse(gate.json())
 
 
