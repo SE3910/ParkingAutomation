@@ -19,11 +19,11 @@ class GateDataProvider extends Component {
         }
         return response.json();
       })
-      .then(data => this.setState({ data: data, loaded: true }));
+      .then(data => this.setState({ data: data, loaded: true, placeholder: "Loaded" }));
   }
   render() {
     const { data, loaded, placeholder } = this.state;
-    return loaded ? data => {<div> {data.name}</div>} : <p>{placeholder}</p>;
+    return (loaded ? <div>{data.name}</div> : <p>{placeholder}</p>);
   }
 }
 export default GateDataProvider;
