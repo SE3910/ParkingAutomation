@@ -31,6 +31,13 @@ def gate(request):
     return JsonResponse(gate.json())
 
 
+def paid(request):
+    action = request.GET.get('action', 'info')
+    gate = Gate.objects.get(pk=request.GET.get('id', '1'))
+    tickets = [a.json() for a in gate.paidticket_set.all()]
+    return JsonResponse({'tickets': tickets})
+
+
 def rates(request):
     ret = {}
     action = request.GET.get('action', 'info')
