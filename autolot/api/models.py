@@ -45,7 +45,7 @@ class Ticket(models.Model):
     clock_in = models.DateTimeField(auto_now_add=True)
 
     def calculate_charge(self, time_out):
-        a = d-self.clock_in 
+        a = time_out-self.clock_in
         dur = a.total_seconds() / 3600  # Rate understands duration in hours
         r = Rate.objects.filter(min_time__lte=dur).order_by('-min_time').first()
         return r.charge * dur
