@@ -52,6 +52,8 @@ class Ticket(models.Model):
 
     def pay(self, gate, payment_type):
         d = datetime.datetime.now(self.clock_in.tzinfo) # I'm so horrible
+        a = d-self.clock_in
+        dur = a.total_seconds() / 3600  # Rate understands duration in hours
         charge = self.calculate_charge(d)
         p = PaidTicket(id=self.id, gate=gate, clock_in = self.clock_in, time_parked = dur, amount_paid=charge, payment_type=payment_type)
         p.save()

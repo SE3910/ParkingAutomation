@@ -19,6 +19,7 @@ class Car(Thread):
         conn.request("GET", "/api/gate/?action=enter")
         r = conn.getresponse()
         data = r.read()
+        print(r.status, r.reason)
 
         # parse the json for our ticket id and spot then notify that we took the spot and sleep our millis
         parsed = json.loads(data.decode('utf-8'))
@@ -29,12 +30,18 @@ class Car(Thread):
  
         #conn.request("GET", "/api/gate/?spot=take&id="+spot)
         #conn.getresponse()
+        conn.close()
 
         time.sleep(self.duration)
         
         # attempt an exit
         print("Ticket "+self.ticket+" exiting")
+        conn = http.client.HTTPConnection(url)
         conn.request("GET", "/api/gate/?action=exit&ticketId="+self.ticket)
+        r = conn.getresponse()
+        print(r.status, r.reason)
+        conn.close()
+        print("car left")
 
 
 random.seed()
