@@ -29,10 +29,10 @@ class GateDataProvider extends Component {
       })
       .then(data => {
       if((data.tickets.length)>0){
-          return this.setState((state) => ({ data: data, currentTicket: data.tickets[data.tickets.length-1].ticketId, timestamp: data.tickets[data.tickets.length-1].timestamp, loaded: true, placeholder: "Loaded" }));
-        }
-         return this.setState((state) => ({ data: data, currentTicket: "No ticket data at this time.", timestamp: "", loaded: true, placeholder: "Loaded" }));
-       });
+          return this.setState(() => ({ data: data, currentTicket: data.tickets[data.tickets.length-1].ticketId, timestamp: data.tickets[data.tickets.length-1].timestamp, loaded: true, placeholder: "Loaded" }));
+        } else {
+         return this.setState(() => ({ data: data, currentTicket: "No ticket data at this time.", timestamp: "", loaded: true, placeholder: "Loaded" }));
+       }});
 
 
   }

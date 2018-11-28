@@ -28,7 +28,7 @@ class SpotDataProvider extends Component {
         return response.json();
       })
       .then(data => {
-        if((data.totalSpots - data.tickets.length)>=0){
+        if((data.totalSpots - data.tickets.length)>0){
           return this.setState((state) => ({ data: data, availableSpots: data.totalSpots - data.tickets.length, spotsTaken: data.tickets.length, loaded: true, placeholder: "Loaded" }));
         }
         return this.setState((state) => ({ data: data, availableSpots: "Lot Full", spotsTaken: "50", loaded: true, placeholder: "Loaded" }));
