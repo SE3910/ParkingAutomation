@@ -35,12 +35,6 @@ class SpotDataProvider extends Component {
         });
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.currentTicket !== prevProps.currentTicket){
-        this.fetchData(this.props.currentTicket)
-    }
-  }
-
   render() {
     const { data, availableSpots, spotsTaken, loaded, placeholder } = this.state;
 

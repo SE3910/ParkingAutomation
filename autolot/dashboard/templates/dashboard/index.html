@@ -145,7 +145,7 @@
                             </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="card ">
                                     <div id="ticketTable"><!--React--></div>
                                 <div class="card-body ">
@@ -155,17 +155,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card  card-tasks">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Blank</h4>
-                                    <p class="card-category">Blank</p>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="card ">
+                                    <div id="paidTicketTable"><!--React--></div>
                                 <div class="card-body ">
-
+                                    <div id="chartHours" class="ct-chart"></div>
                                 </div>
                                 <div class="card-footer ">
-
                                 </div>
                             </div>
                         </div>
@@ -174,29 +170,7 @@
             </div>
             <footer class="footer">
                 <div class="container">
-                    <nav>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
+
                         <p class="copyright text-center">
                             ©
                             <script>
@@ -208,7 +182,7 @@
             </footer>
         </div>
     </div>
-    
+
 {% load static %}
 <script src="{% static 'dashboard/main.js' %}"></script>
 </body>

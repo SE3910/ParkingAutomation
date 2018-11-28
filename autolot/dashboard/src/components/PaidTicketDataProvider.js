@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class TicketTableDataProvider extends Component {
+class PaidTicketDataProvider extends Component {
 
   static propTypes = {
     endpoint: PropTypes.string.isRequired,
@@ -29,7 +29,7 @@ class TicketTableDataProvider extends Component {
   }
 
   render() {
-    const { data, loaded, placeholder } = this.state;
+    const { tickets, loaded, placeholder } = this.state;
 
     return ( loaded ?
 
@@ -39,20 +39,28 @@ class TicketTableDataProvider extends Component {
                         <div className="col-md-12">
                             <div className="card strpied-tabled-with-hover">
                                 <div className="card-header ">
-                                    <h4 className="card-title">Cars Parked</h4>
-                                    <p className="card-category">Active Tickets</p>
+                                    <h4 className="card-title">Cars Exited</h4>
+                                    <p className="card-category">Paid Tickets</p>
                                 </div>
                                 <div className="card-body table-full-width table-responsive">
                                     <table className="table table-hover table-striped">
                                         <thead>
                                             <th>TicketId</th>
-                                            <th>Timestamp</th>
+                                            <th>Clock In</th>
+                                            <th>Clock Out</th>
+                                            <th>Time Parked</th>
+                                            <th>Amount Paid</th>
+                                            <th>Payment Type</th>
                                         </thead>
                                         <tbody>
                                             {this.state.data.tickets.map(ticket=>
                                                  <tr>
                                                     <td key={ticket.ticketId}>{ticket.ticketId}</td>
-                                                    <td key={ticket.timestamp}>{ticket.timestamp}</td>
+                                                    <td key={ticket.clockIn}>{ticket.clockIn}</td>
+                                                    <td key={ticket.clockOut}>{ticket.clockOut}</td>
+                                                    <td key={ticket.timeParked}>{ticket.timeParked}</td>
+                                                    <td key={ticket.amountPaid}>{ticket.amountPaid}</td>
+                                                    <td key={ticket.paymentType}>{ticket.paymentType}</td>
                                                  </tr>
                                              )}
                                 </tbody>
@@ -66,4 +74,4 @@ class TicketTableDataProvider extends Component {
   }
 
 }
-export default TicketTableDataProvider;
+export default PaidTicketDataProvider;

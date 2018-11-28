@@ -72,7 +72,7 @@ class PaidTicket(models.Model):
     payment_type = models.CharField(max_length=4)
 
     def json(self):
-        return {'clockIn': str(self.clock_in), 'clockOut': str(self.clock_out), 'timeParked': str(self.time_parked*60), 'amountPaid': str(self.amount_paid), 'paymentType': self.payment_type}
+        return {'ticketId': str(self.id), 'clockIn': str(self.clock_in), 'clockOut': str(self.clock_out), 'timeParked': str(self.time_parked*60), 'amountPaid': str(self.amount_paid), 'paymentType': self.payment_type}
 
 
 class Spot(models.Model):

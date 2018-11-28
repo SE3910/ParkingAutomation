@@ -31,16 +31,10 @@ class GateDataProvider extends Component {
       if((data.tickets.length)>0){
           return this.setState((state) => ({ data: data, currentTicket: data.tickets[data.tickets.length-1].ticketId, timestamp: data.tickets[data.tickets.length-1].timestamp, loaded: true, placeholder: "Loaded" }));
         }
-         return this.setState((state) => ({ data: data, currentTicket: "No ticket data at this time.", timestamp: "00:00:00", loaded: true, placeholder: "Loaded" }));
+         return this.setState((state) => ({ data: data, currentTicket: "No ticket data at this time.", timestamp: "", loaded: true, placeholder: "Loaded" }));
        });
 
 
-  }
-
-  componentDidUpdate(prevProps){
-    if(this.props.currentTicket !== prevProps.currentTicket){
-        this.fetchData(this.props.currentTicket)
-    }
   }
 
   render() {
@@ -49,7 +43,7 @@ class GateDataProvider extends Component {
     return ( loaded ?
     <div>
         <p>Ticket Number: {currentTicket}</p>
-        <p>Timestamp: {timestamp}</p>
+        <p>Timestamp: {data.tickets[data.tickets.length-1].timestamp}</p>
     </div>: <p>{placeholder}</p>);
   }
 }

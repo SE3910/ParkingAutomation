@@ -28,11 +28,6 @@ class LotDataProvider extends Component {
       .then(data => this.setState((state) => ({ data: data, loaded: true, placeholder: "Loaded" })));
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.currentTicket !== prevProps.currentTicket){
-        this.fetchData(this.props.currentTicket)
-    }
-  }
 
   render() {
     const { data, loaded, placeholder } = this.state;
